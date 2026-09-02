@@ -114,7 +114,7 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="section-padding border-b border-border bg-gradient-to-b from-background to-accent/30">
+    <section className="py-16 lg:py-24 border-b border-border bg-gradient-to-b from-background to-accent/30">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl text-center lg:text-left">
@@ -183,7 +183,7 @@ function Highlights() {
 
 function Products() {
   return (
-    <section id="products" className="section-padding bg-background">
+    <section id="products" className="py-16 lg:py-24 bg-background">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Our Products</h2>
@@ -234,7 +234,7 @@ function Products() {
 
 function Contact() {
   return (
-    <section id="contact" className="section-padding border-t border-border bg-accent/30">
+    <section id="contact" className="py-16 lg:py-24 border-t border-border bg-accent/30">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Ready to Order?</h2>
         <p className="mx-auto mt-4 max-w-2xl text-balance text-muted-foreground">
