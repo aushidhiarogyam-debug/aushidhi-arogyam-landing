@@ -1,7 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { Phone, Leaf, ShoppingBag, ArrowRight, CheckCircle2 } from "lucide-react";
 
 import logoAsset from "../assets/aushidhi-logo.jpg.asset.json";
+import imgFaceWash from "../assets/products/skincare-facewash.jpg";
+import imgGlowOil from "../assets/products/skincare-glowoil.jpg";
+import imgMoisturizer from "../assets/products/skincare-moisturizer.jpg";
+import imgHairOil from "../assets/products/haircare-oil.jpg";
+import imgShampoo from "../assets/products/haircare-shampoo.jpg";
+import imgSerum from "../assets/products/haircare-serum.jpg";
+import imgVitality from "../assets/products/men-vitality.jpg";
+import imgTonic from "../assets/products/men-tonic.jpg";
+import imgSlimTea from "../assets/products/weight-tea.jpg";
+import imgDetox from "../assets/products/weight-detox.jpg";
+import imgChyawanprash from "../assets/products/immunity-chyawanprash.jpg";
+import imgTurmeric from "../assets/products/immunity-turmeric.jpg";
+import imgSoap from "../assets/products/personal-soap.jpg";
+import imgBodyOil from "../assets/products/personal-bodyoil.jpg";
 
 // Replace with your business WhatsApp number (with country code, no + or spaces).
 const WHATSAPP_NUMBER = "919999999999";
@@ -31,44 +46,116 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const categories = [
+type Product = {
+  name: string;
+  category: string;
+  description: string;
+  image: string;
+};
+
+const categoryDescriptions: Record<string, string> = {
+  Skincare:
+    "Gentle, plant-based cleansers, oils, and creams that nourish your skin without harsh chemicals.",
+  Haircare:
+    "Strengthening oils and cleansers made with traditional herbs to support healthy hair and scalp.",
+  "Men's Wellness":
+    "Natural supplements and wellness blends crafted to support energy, stamina, and daily vitality.",
+  "Weight Management":
+    "Herbal teas, juices, and supplements to support digestion, metabolism, and a balanced lifestyle.",
+  "Immunity & Health":
+    "Everyday immunity boosters and wellness tonics made from time-tested natural ingredients.",
+  "Personal Care":
+    "Safe, natural daily-care essentials for the whole family, free from harmful additives.",
+};
+
+const products: Product[] = [
   {
-    title: "Skincare",
-    description:
-      "Gentle, plant-based cleansers, oils, and creams that nourish your skin without harsh chemicals.",
-    items: ["Herbal Face Wash", "Natural Moisturizer", "Anti-Acne Gel", "Skin Glow Oil"],
+    name: "Herbal Face Wash",
+    category: "Skincare",
+    description: "A gentle daily cleanser with neem and tulsi that removes impurities without drying the skin.",
+    image: imgFaceWash,
   },
   {
-    title: "Haircare",
-    description:
-      "Strengthening oils and cleansers made with traditional herbs to support healthy hair and scalp.",
-    items: ["Herbal Hair Oil", "Amla Shampoo", "Hair Growth Serum", "Dandruff Care Pack"],
+    name: "Skin Glow Oil",
+    category: "Skincare",
+    description: "A nourishing facial oil blend that supports an even, naturally radiant complexion.",
+    image: imgGlowOil,
   },
   {
-    title: "Men's Wellness",
-    description:
-      "Natural supplements and wellness blends crafted to support energy, stamina, and daily vitality.",
-    items: ["Vitality Capsules", "Energy Booster", "Herbal Tea Blend", "Daily Wellness Tonic"],
+    name: "Natural Moisturizing Cream",
+    category: "Skincare",
+    description: "Lightweight herbal cream with aloe vera for soft, hydrated skin all day.",
+    image: imgMoisturizer,
   },
   {
-    title: "Weight Management",
-    description:
-      "Herbal teas, juices, and supplements to support digestion, metabolism, and a balanced lifestyle.",
-    items: ["Slimming Herbal Tea", "Digestive Juice", "Metabolism Support", "Detox Powder"],
+    name: "Herbal Hair Oil",
+    category: "Haircare",
+    description: "Traditional amla-based oil that strengthens roots and supports healthy hair growth.",
+    image: imgHairOil,
   },
   {
-    title: "Immunity & Health",
-    description:
-      "Everyday immunity boosters and wellness tonics made from time-tested natural ingredients.",
-    items: ["Chyawanprash", "Herbal Kadha", "Turmeric Capsules", "Immunity Drops"],
+    name: "Amla Shampoo",
+    category: "Haircare",
+    description: "Mild, sulphate-free cleanser with amla and shikakai for clean, shiny hair.",
+    image: imgShampoo,
   },
   {
-    title: "Personal Care",
-    description:
-      "Safe, natural daily-care essentials for the whole family, free from harmful additives.",
-    items: ["Herbal Hand Wash", "Natural Soap", "Body Oil", "Oral Care Powder"],
+    name: "Hair Growth Serum",
+    category: "Haircare",
+    description: "Concentrated herbal serum with rosemary and hibiscus to nourish the scalp.",
+    image: imgSerum,
+  },
+  {
+    name: "Vitality Capsules",
+    category: "Men's Wellness",
+    description: "Ashwagandha-based capsules crafted to support energy, stamina, and daily vitality.",
+    image: imgVitality,
+  },
+  {
+    name: "Herbal Energy Tonic",
+    category: "Men's Wellness",
+    description: "A daily wellness tonic with traditional herbs to fight fatigue and support strength.",
+    image: imgTonic,
+  },
+  {
+    name: "Slimming Herbal Tea",
+    category: "Weight Management",
+    description: "A refreshing green tea blend that supports metabolism and healthy digestion.",
+    image: imgSlimTea,
+  },
+  {
+    name: "Herbal Detox Powder",
+    category: "Weight Management",
+    description: "A natural detox blend that helps cleanse the system and support gut health.",
+    image: imgDetox,
+  },
+  {
+    name: "Chyawanprash",
+    category: "Immunity & Health",
+    description: "The classic amla-rich herbal jam for everyday immunity and overall strength.",
+    image: imgChyawanprash,
+  },
+  {
+    name: "Turmeric Capsules",
+    category: "Immunity & Health",
+    description: "Pure curcumin-rich turmeric capsules to support immunity and joint health.",
+    image: imgTurmeric,
+  },
+  {
+    name: "Natural Herbal Soap",
+    category: "Personal Care",
+    description: "Handmade soap with neem and herbs — gentle cleansing for the whole family.",
+    image: imgSoap,
+  },
+  {
+    name: "Herbal Body Oil",
+    category: "Personal Care",
+    description: "A light, fast-absorbing body oil with coconut and jasmine for soft, healthy skin.",
+    image: imgBodyOil,
   },
 ];
+
+const categoryNames = Object.keys(categoryDescriptions);
 
 const highlights = [
   "100% herbal & natural ingredients",
