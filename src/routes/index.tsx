@@ -269,49 +269,89 @@ function Highlights() {
 }
 
 function Products() {
+  const [activeCategory, setActiveCategory] = useState<string>("All");
+
+  const visibleProducts =
+    activeCategory === "All"
+      ? products
+      : products.filter((product) => product.category === activeCategory);
+
   return (
     <section id="products" className="py-16 lg:py-24 bg-background">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
+        <div className="mb-8 text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Our Products</h2>
           <p className="mx-auto mt-4 max-w-2xl text-balance text-muted-foreground">
-            Explore our range of herbal wellness products. Tap any category to ask about availability,
-            pricing, or place an order directly on WhatsApp.
+            Choose a category to see its products. Tap any product to ask about availability, pricing, or
+            place an order directly on WhatsApp.
           </p>
         </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((category) => (
-            <div
-              key={category.title}
-              className="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-shadow hover:shadow-md"
-            >
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                <Leaf className="h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-semibold text-foreground">{category.title}</h3>
-              <p className="mt-2 flex-grow text-sm leading-relaxed text-muted-foreground">
-                {category.description}
-              </p>
-              <ul className="mt-4 space-y-1.5">
-                {category.items.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-foreground">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href={whatsappLink(
-                  `Hi Aushidhi Aarogyam, I am interested in your ${category.title} products. Please share more details.`
-                )}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+
+        <div className="mb-8 flex flex-wrap justify-center gap-2">
+          {["All", ...categoryNames].map((name) => {
+            const isActive = activeCategory === name;
+            return (
+              <button
+                key={name}
+                type="button"
+                onClick={() => setActiveCategory(name)}
+                aria-pressed={isActive}
+                className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+                  isActive
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-card text-foreground hover:bg-accent"
+                }`}
               >
-                Enquire on WhatsApp
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </a>
-            </div>
+                {name}
+              </button>
+            );
+          })}
+        </div>
+
+        {activeCategory !== "All" && (
+          <p className="mx-auto mb-8 max-w-2xl text-balance text-center text-sm text-muted-foreground">
+            {categoryDescriptions[activeCategory]}
+          </p>
+        )}
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {visibleProducts.map((product) => (
+            <article
+              key={product.name}
+              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-shadow hover:shadow-md"
+            >
+              <div className="aspect-square w-full overflow-hidden bg-accent/30">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  loading="lazy"
+                  width={768}
+                  height={768}
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+              <div className="flex flex-grow flex-col p-6">
+                <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
+                  <Leaf className="h-3 w-3" />
+                  {product.category}
+                </span>
+                <h3 className="mt-3 text-lg font-semibold text-foreground">{product.name}</h3>
+                <p className="mt-2 flex-grow text-sm leading-relaxed text-muted-foreground">
+                  {product.description}
+                </p>
+                <a
+                  href={whatsappLink(
+                    `Hi Aushidhi Aarogyam, I am interested in ${product.name} (${product.category}). Please share price and details.`
+                  )}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                >
+                  Enquire on WhatsApp
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </a>
+              </div>
+            </article>
           ))}
         </div>
       </div>
