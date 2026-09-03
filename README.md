@@ -1,14 +1,16 @@
-# Welcome to your Lovable project
+# Aushidhi Arogyam Home
+
+design a website for me, my company's name is Aushidhi arogyam, it is a herbal products company, i want you to create a landing page where some products are listed and for more details it is connected to whatsapp or provided link,it hsould be very good and professional looking, i've uploaded the logo, skincare, heaircare, men well ness , weightloss and etc.it should be simple and should prioritize the products, it should be front page of my business. no fancy stuff.
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/d2a08d53-57ec-48e3-bbee-2fd95e6ba65f).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +22,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
