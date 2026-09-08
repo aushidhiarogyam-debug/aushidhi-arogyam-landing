@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Phone, Leaf, ShoppingBag, ArrowRight, Check, Sparkles } from "lucide-react";
 
-import logoAsset from "../assets/aushidhi-logo.jpg.asset.json";
+import logo from "../assets/logo.jpeg";
 import imgFaceWash from "../assets/products/skincare-facewash.jpg";
 import imgGlowOil from "../assets/products/skincare-glowoil.jpg";
 import imgMoisturizer from "../assets/products/skincare-moisturizer.jpg";
@@ -177,9 +177,9 @@ function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <a href="/" className="flex items-center gap-3">
           <img
-            src={logoAsset.url}
+            src={logo}
             alt="Aushidhi Aarogyam logo"
-            className="h-10 w-auto rounded-full object-contain sm:h-11"
+            className="h-14 w-auto rounded-full object-contain sm:h-11"
           />
           <div className="hidden flex-col sm:flex">
             <span className="font-serif text-lg font-bold leading-tight text-foreground">
@@ -469,9 +469,9 @@ function Footer() {
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="flex items-center gap-3">
             <img
-              src={logoAsset.url}
+              src={logo}
               alt="Aushidhi Aarogyam"
-              className="h-9 w-auto rounded-full bg-background object-contain p-0.5"
+              className="h-14 w-auto rounded-full bg-background object-contain p-0.5"
             />
             <span className="font-serif text-sm font-bold text-deep-foreground">
               Aushidhi Aarogyam Pvt. Ltd.
