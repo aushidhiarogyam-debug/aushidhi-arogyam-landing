@@ -27,13 +27,13 @@ const whatsappLink = (message: string) =>
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aushidhi Aarogyam Pvt. Ltd. | Herbal Wellness Products" },
+      { title: "Aushadhi Aarogyam Pvt. Ltd. | Herbal Wellness Products" },
       {
         name: "description",
         content:
-          "Aushidhi Aarogyam offers pure herbal products for skincare, haircare, men's wellness, weight management, and everyday health. Natural care, rooted in tradition.",
+          "Aushadhi Aarogyam offers pure herbal products for skincare, haircare, men's wellness, weight management, and everyday health. Natural care, rooted in tradition.",
       },
-      { property: "og:title", content: "Aushidhi Aarogyam Pvt. Ltd. | Herbal Wellness Products" },
+      { property: "og:title", content: "Aushadhi Aarogyam Pvt. Ltd. | Herbal Wellness Products" },
       {
         property: "og:description",
         content:
@@ -178,12 +178,12 @@ function Header() {
         <a href="/" className="flex items-center gap-3">
           <img
             src={logo}
-            alt="Aushidhi Aarogyam logo"
+            alt="Aushadhi Aarogyam logo"
             className="h-14 w-auto rounded-full object-contain sm:h-11"
           />
           <div className="hidden flex-col sm:flex">
             <span className="font-serif text-lg font-bold leading-tight text-foreground">
-              Aushidhi Aarogyam
+              Aushadhi Aarogyam
             </span>
             <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
               Pvt. Ltd.
@@ -249,7 +249,7 @@ function Hero() {
             </span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground">
-            Aushidhi Aarogyam brings you trusted herbal products for skincare, haircare, men's
+            Aushadhi Aarogyam brings you trusted herbal products for skincare, haircare, men's
             wellness, weight management, and everyday health — simple, effective, and rooted in
             nature.
           </p>
@@ -262,7 +262,7 @@ function Hero() {
               Browse Products
             </a>
             <a
-              href={whatsappLink("Hi Aushidhi Aarogyam, I want to know more about your products.")}
+              href={whatsappLink("Hi Aushadhi Aarogyam, I want to know more about your products.")}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-base font-medium text-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary hover:shadow-md"
@@ -400,7 +400,7 @@ function Products() {
                 </p>
                 <a
                   href={whatsappLink(
-                    `Hi Aushidhi Aarogyam, I am interested in ${product.name} (${product.category}). Please share price and details.`
+                    `Hi Aushadhi Aarogyam, I am interested in ${product.name} (${product.category}). Please share price and details.`
                   )}
                   target="_blank"
                   rel="noreferrer"
@@ -442,7 +442,7 @@ function Contact() {
         </p>
         <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
-            href={whatsappLink("Hi Aushidhi Aarogyam, I would like to place an order.")}
+            href={whatsappLink("Hi Aushadhi Aarogyam, I would like to place an order.")}
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-sage px-8 py-3.5 text-base font-semibold text-deep shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
@@ -470,15 +470,15 @@ function Footer() {
           <div className="flex items-center gap-3">
             <img
               src={logo}
-              alt="Aushidhi Aarogyam"
+              alt="Aushadhi Aarogyam"
               className="h-14 w-auto rounded-full bg-background object-contain p-0.5"
             />
             <span className="font-serif text-sm font-bold text-deep-foreground">
-              Aushidhi Aarogyam Pvt. Ltd.
+              Aushadhi Aarogyam Pvt. Ltd.
             </span>
           </div>
           <p className="text-center text-sm text-deep-foreground/60">
-            © {new Date().getFullYear()} Aushidhi Aarogyam Pvt. Ltd. All rights reserved.
+            © {new Date().getFullYear()} Aushadhi Aarogyam Pvt. Ltd. All rights reserved.
           </p>
         </div>
       </div>
