@@ -19,7 +19,7 @@ import imgSoap from "../assets/products/personal-soap.jpg";
 import imgBodyOil from "../assets/products/personal-bodyoil.jpg";
 
 // Replace with your business WhatsApp number (with country code, no + or spaces).
-const WHATSAPP_NUMBER = "919999999999";
+const WHATSAPP_NUMBER = "919654706991";
 
 const whatsappLink = (message: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
