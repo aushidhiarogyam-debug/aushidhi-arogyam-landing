@@ -198,6 +198,12 @@ function Header() {
             Products
           </a>
           <a
+            href="#feedback"
+            className="rounded-full px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+          >
+            Contact
+          </a>
+          <a
             href="#contact"
             className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md"
           >
