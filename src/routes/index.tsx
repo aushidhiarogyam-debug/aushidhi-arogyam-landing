@@ -418,6 +418,169 @@ function Products() {
   );
 }
 
+function FeedbackForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (
+    field: keyof typeof formData,
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((current) => ({
+      ...current,
+      [field]: event.target.value,
+    }));
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const subject = encodeURIComponent("Website Feedback - Aushadhi Aarogyam");
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+
+    window.location.href = `mailto:info@aushadhiaarogyam.com?subject=${subject}&body=${body}`;
+    setSubmitted(true);
+    setFormData({ name: "", email: "", message: "" });
+  };
+
+  return (
+    <section id="feedback" className="scroll-mt-20 bg-background py-16 lg:py-20">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-8 rounded-[2rem] border border-border bg-card p-6 shadow-sm lg:grid-cols-[1fr_1.2fr] lg:p-10">
+          <div className="flex flex-col justify-center">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              Feedback
+            </span>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Share your thoughts
+            </h2>
+            <p className="mt-4 max-w-lg text-balance leading-relaxed text-muted-foreground">
+              We value your feedback on our products, service, and experience. Let us know what you
+              love, what could improve, and how we can help better.
+            </p>
+            <div className="mt-6 rounded-2xl border border-primary/20 bg-primary/5 p-4 text-sm text-foreground">
+              <p className="font-medium">Contact email</p>
+              <a href="mailto:info@aushadhiaarogyam.com" className="mt-1 inline-block text-primary">
+                info@aushadhiaarogyam.com
+              </a>
+            </div>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label htmlFor="name" className="mb-2 block text-sm font-medium text-foreground">
+                Your name
+              </label>
+              <input
+                id="name"
+                type="text"
+                value={formData.name}
+                onChange={(event) => handleChange("name", event)}
+                required
+                placeholder="Enter your name"
+                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="email" className="mb-2 block text-sm font-medium text-foreground">
+                Email address
+              </label>
+              <input
+                id="email"
+                type="email"
+                value={formData.email}
+                onChange={(event) => handleChange("email", event)}
+                required
+                placeholder="you@example.com"
+                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="message" className="mb-2 block text-sm font-medium text-foreground">
+                Your feedback
+              </label>
+              <textarea
+                id="message"
+                rows={5}
+                value={formData.message}
+                onChange={(event) => handleChange("message", event)}
+                required
+                placeholder="Tell us about your experience..."
+                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+              />
+            </div>
+
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md transition-all hover:-translate-y-0.5 hover:bg-primary/90"
+              >
+                Send Feedback
+              </button>
+              {submitted && (
+                <span className="text-sm text-emerald-600">Your email app should open now.</span>
+              )}
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PrivacyPolicy() {
+  return (
+    <section id="privacy-policy" className="scroll-mt-20 bg-deep py-16 lg:py-20">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
+            Privacy
+          </span>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-deep-foreground sm:text-4xl">
+            Privacy Policy
+          </h2>
+          <p className="mt-4 text-balance leading-relaxed text-deep-foreground/75">
+            We respect your privacy and are committed to protecting the personal information you
+            share with us through this website or direct communication.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="rounded-2xl border border-deep-foreground/10 bg-background/5 p-6">
+            <h3 className="text-lg font-semibold text-deep-foreground">Information we collect</h3>
+            <p className="mt-3 text-sm leading-relaxed text-deep-foreground/70">
+              We may collect basic details such as your name, email address, and feedback message
+              when you contact us or submit an enquiry.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-deep-foreground/10 bg-background/5 p-6">
+            <h3 className="text-lg font-semibold text-deep-foreground">How we use it</h3>
+            <p className="mt-3 text-sm leading-relaxed text-deep-foreground/70">
+              Your information is used to respond to questions, improve our services, and help with
+              product and order support.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-deep-foreground/10 bg-background/5 p-6">
+            <h3 className="text-lg font-semibold text-deep-foreground">Your trust</h3>
+            <p className="mt-3 text-sm leading-relaxed text-deep-foreground/70">
+              We do not sell your personal information. We only use it for the purpose of
+              communication and customer support. The Effectiveness of medicine is dependent on the individual and their health condition. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Contact() {
   return (
     <section id="contact" className="relative overflow-hidden bg-deep py-16 lg:py-24">
@@ -429,18 +592,21 @@ function Contact() {
         aria-hidden
         className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-primary/20 blur-3xl"
       />
-      <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
-          Get In Touch
-        </span>
-        <h2 className="mt-3 text-3xl font-bold tracking-tight text-deep-foreground sm:text-4xl">
-          Ready to Order?
-        </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-balance leading-relaxed text-deep-foreground/70">
-          Have questions or want to place an order? Message us on WhatsApp and we will get back to
-          you quickly with product details, pricing, and delivery information.
-        </p>
-        <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
+            Get In Touch
+          </span>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-deep-foreground sm:text-4xl">
+            Ready to Order?
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-balance leading-relaxed text-deep-foreground/70">
+            Have questions or want to place an order? Message us on WhatsApp and we will get back to
+            you quickly with product details, pricing, and delivery information.
+          </p>
+        </div>
+
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 rounded-3xl border border-deep-foreground/10 bg-background/5 p-6 sm:flex-row sm:flex-wrap">
           <a
             href={whatsappLink("Hi Aushadhi Aarogyam, I would like to place an order.")}
             target="_blank"
@@ -455,6 +621,12 @@ function Contact() {
             className="inline-flex items-center gap-2 rounded-full border border-deep-foreground/30 px-8 py-3.5 text-base font-medium text-deep-foreground transition-all hover:-translate-y-0.5 hover:border-deep-foreground/60"
           >
             Call Us
+          </a>
+          <a
+            href="mailto:info@aushadhiaarogyam.com"
+            className="inline-flex items-center gap-2 rounded-full border border-deep-foreground/30 px-8 py-3.5 text-base font-medium text-deep-foreground transition-all hover:-translate-y-0.5 hover:border-deep-foreground/60"
+          >
+            Email Us
           </a>
         </div>
       </div>
@@ -477,9 +649,18 @@ function Footer() {
               Aushadhi Aarogyam Pvt. Ltd.
             </span>
           </div>
-          <p className="text-center text-sm text-deep-foreground/60">
-            © {new Date().getFullYear()} Aushadhi Aarogyam Pvt. Ltd. All rights reserved.
-          </p>
+          <div className="flex flex-col items-center gap-2 text-center text-sm text-deep-foreground/60 sm:items-end">
+            <a href="mailto:info@aushadhiaarogyam.com" className="transition-colors hover:text-deep-foreground">
+              info@aushadhiaarogyam.com
+            </a>
+            <div className="flex items-center gap-3">
+              <a href="#privacy-policy" className="transition-colors hover:text-deep-foreground">
+                Privacy Policy
+              </a>
+              <span>•</span>
+              <p>© {new Date().getFullYear()} Aushadhi Aarogyam Pvt. Ltd. All rights reserved.</p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
@@ -494,6 +675,8 @@ function Index() {
         <Hero />
         <Highlights />
         <Products />
+        <FeedbackForm />
+        <PrivacyPolicy />
         <Contact />
       </main>
       <Footer />
