@@ -536,51 +536,6 @@ function FeedbackForm() {
   );
 }
 
-function PrivacyPolicy() {
-  return (
-    <section id="privacy-policy" className="scroll-mt-20 bg-deep py-16 lg:py-20">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
-            Privacy
-          </span>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-deep-foreground sm:text-4xl">
-            Privacy Policy
-          </h2>
-          <p className="mt-4 text-balance leading-relaxed text-deep-foreground/75">
-            We respect your privacy and are committed to protecting the personal information you
-            share with us through this website or direct communication.
-          </p>
-        </div>
-
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          <div className="rounded-2xl border border-deep-foreground/10 bg-background/5 p-6">
-            <h3 className="text-lg font-semibold text-deep-foreground">Information we collect</h3>
-            <p className="mt-3 text-sm leading-relaxed text-deep-foreground/70">
-              We may collect basic details such as your name, email address, and feedback message
-              when you contact us or submit an enquiry.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-deep-foreground/10 bg-background/5 p-6">
-            <h3 className="text-lg font-semibold text-deep-foreground">How we use it</h3>
-            <p className="mt-3 text-sm leading-relaxed text-deep-foreground/70">
-              Your information is used to respond to questions, improve our services, and help with
-              product and order support.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-deep-foreground/10 bg-background/5 p-6">
-            <h3 className="text-lg font-semibold text-deep-foreground">Your trust</h3>
-            <p className="mt-3 text-sm leading-relaxed text-deep-foreground/70">
-              We do not sell your personal information. We only use it for the purpose of
-              communication and customer support. The Effectiveness of medicine is dependent on the individual and their health condition. 
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Contact() {
   return (
     <section id="contact" className="relative overflow-hidden bg-deep py-16 lg:py-24">
@@ -654,8 +609,12 @@ function Footer() {
               info@aushadhiaarogyam.com
             </a>
             <div className="flex items-center gap-3">
-              <a href="#privacy-policy" className="transition-colors hover:text-deep-foreground">
+              <a href="/privacy-policy" className="transition-colors hover:text-deep-foreground">
                 Privacy Policy
+              </a>
+              <span>•</span>
+              <a href="/terms-of-use" className="transition-colors hover:text-deep-foreground">
+                Terms of Use
               </a>
               <span>•</span>
               <p>© {new Date().getFullYear()} Aushadhi Aarogyam Pvt. Ltd. All rights reserved.</p>
@@ -676,7 +635,6 @@ function Index() {
         <Highlights />
         <Products />
         <FeedbackForm />
-        <PrivacyPolicy />
         <Contact />
       </main>
       <Footer />
