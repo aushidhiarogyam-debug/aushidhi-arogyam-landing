@@ -430,6 +430,7 @@ function FeedbackForm() {
     email: "",
     message: "",
   });
+  const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (
@@ -445,14 +446,19 @@ function FeedbackForm() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    if (!consent) {
+      return;
+    }
+
     const subject = encodeURIComponent("Website Feedback - Aushadhi Aarogyam");
     const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      `Name: ${formData.name}\nEmail: ${formData.email}\nConsent: ${consent ? "Yes" : "No"}\n\nMessage:\n${formData.message}`
     );
 
     window.location.href = `mailto:info@aushadhiaarogyam.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
     setFormData({ name: "", email: "", message: "" });
+    setConsent(false);
   };
 
   return (
@@ -522,6 +528,20 @@ function FeedbackForm() {
                 placeholder="Tell us about your experience..."
                 className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
               />
+            </div>
+
+            <div className="flex items-start gap-3 rounded-xl border border-border bg-background px-3 py-2.5">
+              <input
+                id="consent"
+                type="checkbox"
+                checked={consent}
+                onChange={(event) => setConsent(event.target.checked)}
+                required
+                className="mt-1 h-4 w-4 rounded border-border text-primary focus:ring-primary"
+              />
+              <label htmlFor="consent" className="text-sm leading-relaxed text-muted-foreground">
+                I agree to receive your marketing and promotional emails, messages, whatsapp, and calls.
+              </label>
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
